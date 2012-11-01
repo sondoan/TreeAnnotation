@@ -1,0 +1,26 @@
+(dp0
+S'temp2.ps'
+p1
+(S'(S (DGL (DG (DGSSIG (MED sMED) (DGRM (SSIG (DOSE sDOSE) (MODE sMODE) (FREQ sFREQ)))))))'
+p2
+I72
+tp3
+sS'out.ps'
+p4
+(S'(S (DGL (DG (DGSSIG (MED sMED) (DGRM (SSIG (DOSE sDOSE) (MODE sMODE) (FREQ sFREQ)))))))'
+p5
+I72
+tp6
+sS'out1.ps'
+p7
+(S'(S (NP John) (VP (V saw) (NP Mary)))\n'
+p8
+I72
+tp9
+sS'out'
+p10
+(S'(S (NP John) (VP (V saw) (NP Mary)))\n'
+p11
+I72
+tp12
+s.

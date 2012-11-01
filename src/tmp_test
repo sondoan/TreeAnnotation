@@ -1,0 +1,2 @@
+( 13 ) Neurontin 300 mg p.o. q.a.m. , 100 mg p.o. at 2:00 p.m. , 300 mg p.o. q.h.s. ,	 # sMED:neurontin # sDOSE:300 mg # sMODE:p.o. # sFREQ:q.a.m. # sDOSE:100 mg # sMODE:p.o. # sFREQ:at 2:00 p.m. # sDOSE:300 mg # sMODE:p.o. # sFREQ:q.h.s.	(S (DGL (DG (DGMSIG (MED 'sMED') (DGRM (SSIG (DOSE 'sDOSE') (MODE 'sMODE') (FREQ 'sFREQ'))) (SIGL (SSIG (DOSE 'sDOSE') (MODE 'sMODE') (FREQ 'sFREQ')) (SSIG (DOSE 'sDOSE') (MODE 'sMODE') (FREQ 'sFREQ')))))))
+

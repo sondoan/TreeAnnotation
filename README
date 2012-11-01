@@ -1,0 +1,5 @@
+Files:
+./src
+GenTree.py: Annotation tool
+Run: python GenTree.py ../data/dataset1/train/dat1a_train_singledrug ../grammar_V1.cfg ./gold_file
+

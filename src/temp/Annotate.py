@@ -1,0 +1,163 @@
+# Annotation tool for parsing tree
+# Written by Son Doan, Jan 2010
+
+import sys
+from nltk.draw.util import *
+from nltk.draw import *
+from nltk.tree import Tree, bracket_parse
+
+from Tkinter import *
+
+tree = '''(S
+  (DGL
+    (DG
+      (DGMSIG
+        (MED sMED)
+        (DGRM
+          (SSIG
+            (DOSE sDOSE)
+            (MODE sMODE)
+            (FREQ sFREQ)
+            (REASON sREASON)))
+        (SIGL
+          (ANDSIGL
+            (ANDSIG (REASON sREASON))
+            (ANDSIG (REASON sREASON))))))))'''
+
+tree2 = '''(S
+  (DGL
+    (DG
+      (DGMSIG
+        (MED sMED)
+        (SIGL
+          (ANDSIGL
+            (ANDSIG (DOSE sDOSE) (FREQ sFREQ))
+            (ANDSIG (FREQ sFREQ))))))))'''
+
+tree3 = '''(S
+  (DGL
+    (DG
+      (DGMSIG
+        (MED sMED)
+        (SIGL
+          (ANDSIGL
+            (ANDSIG (FREQ sFREQ))
+            (ANDSIG (FREQ sFREQ))))))))'''
+
+tree4 = '''(S
+  (DGL
+    (DG
+      (DGMSIG
+        (MED sMED)
+        (DGRM
+          (SSIG
+            (DOSE sDOSE)
+            (MODE sMODE)
+            (FREQ sFREQ)
+            (REASON sREASON)))
+        (SIGL
+          (ANDSIGL
+            (ANDSIG (REASON sREASON))
+            (ANDSIG (REASON sREASON))))))))'''
+
+#cf  = CanvasFrame(width=1050, height=650, closeenough=2)
+cf  = CanvasFrame(width=1050, height=650)
+#print cf.scrollregion()
+#cf.pack(expand=YES, fill=BOTH)
+
+#master = Tk()
+Label(text='This is button').pack(side=LEFT,padx=10,pady=10)
+Entry(width=10).pack(side=LEFT,padx=10,pady=10)
+b=Button(text='Exit').pack(side=BOTTOM)
+
+#t = bracket_parse(tree)
+#t2 = bracket_parse(tree2)
+#t3 = bracket_parse(tree3)
+#t4 = bracket_parse(tree4)
+#
+## Add widget but no position
+#tc = TreeWidget(cf.canvas(),t)
+#tc2 = TreeWidget(cf.canvas(),t2)
+#tc3 = TreeWidget(cf.canvas(),t3)
+#tc4 = TreeWidget(cf.canvas(),t4)
+#
+## Parent of trees
+#paren = ParenWidget(cf.canvas(),tc2)
+#paren1 = ParenWidget(cf.canvas(),tc3)
+#paren2 = ParenWidget(cf.canvas(),tc4)
+#
+### Add a widget into canvas
+#cf.add_widget(tc,10,10)
+#
+#cf.add_widget(paren, tc.bbox()[2]+10, 10)
+##cf.add_widget(paren1, tc2.bbox()[3]+10, tc.bbox()[3]+10)
+#cf.add_widget(paren1, 10, tc.bbox()[3]+10)
+#cf.add_widget(paren2, tc2.bbox()[3]+10, tc.bbox()[3]+10)
+#
+##cf.add_widget(paren2, tc2.bbox()[3], tc.bbox()[3])
+
+## Drawing
+##cf.mainloop()
+#
+#a = raw_input("Which is the best parsing tree ?")
+#print a
+
+def TreeView(TreeList):
+    # List of trees
+    #TreeList = [tree,tree2,tree3,tree4]
+    # Parse bracket
+    t= []
+    for tree in TreeList:
+        t.append(bracket_parse(tree))
+    print t
+    # Add widget
+    tc = []
+    for i in range(0,len(t)):
+        tc.append(TreeWidget(cf.canvas(),t[i]))
+    #print tc
+    paren = []
+    # Gen paren of trees
+    for i in range(1,len(t)):
+        paren.append(ParenWidget(cf.canvas(),tc[i]))
+    #print paren
+    # Locate position
+
+    ## Line 1 
+    #cf.add_widget(tc[0],10,10)
+    #cf.add_widget(paren[0],tc[0].bbox()[2],10)
+    #
+    ## Line 2
+    #cf.add_widget(paren[1],10,tc[0].bbox()[3]+10)
+    #cf.add_widget(paren[2],tc[2].bbox()[2]+10,tc[0].bbox()[3]+10)
+    #
+    ## Drawing
+    #cf.mainloop()
+
+    cf.add_widget(tc[0],10,10)
+    count = 1
+    for i in range(1,len(t)):
+        # Line 1
+        cf.add_widget(paren[i-1],tc[i-1].bbox()[2]+10, 10)
+        #ps_file = "canvas_" + str(i)
+        #cf.print_to_file(ps_file)
+
+        count = count + 1 
+
+        #if count>=3:
+        #    print i
+        #    # Write to line 2
+        #    cf.add_widget(paren[1],10,tc[0].bbox()[3]+10)
+        #
+        #    #cf.add_widget(paren[i-1],tc[i-1].bbox()[2]+10,tc[0].bbox()[3]+10)
+        #    #cf.add_widget(paren[i-1],10,tc[0].bbox()[3]+10)
+        #    #cf.add_widget(paren[i-1],tc[i-1].bbox()[2]+10,tc[0].bbox()[3]+10)
+        #    count = count + 1
+        #    break
+        
+    cf.mainloop()
+    #print cf.scrollregion()
+    #cf.print_to_file("canvas.ps")
+
+TreeList = [tree,tree2,tree3,tree4]
+TreeView(TreeList)
+

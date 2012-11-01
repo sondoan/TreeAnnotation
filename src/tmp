@@ -1,0 +1,6 @@
+You must continue your medications , especially aspirin and plavix to protect your stent.	 # sMED:your medications # sMED:aspirin # sMED:plavix # sREASON:your stent	(S (DGL (DG (DGSSIG (MED 'sMED'))) (DGL (DG (DGSSIG (MED 'sMED'))) (DGL (DG (DGSSIG (MED 'sMED') (DGRM (SSIG (REASON 'sREASON')))))))))
+
+Wanted to send with NPH and short acting pre-meal regimen but pt refused to change home regimen despite repeated explanations of value of tighter control.	 # sMED:nph # sMED:short acting...regimen # sFREQ:pre-meal	(S (DGL (DG (DGSSIG (MED 'sMED'))) (DGL (DG (DGSSIG (MED 'sMED') (DGRM (SSIG (FREQ 'sFREQ'))))))))
+
+His Plavix was stopped and his Coumadin was held.	 # sMED:plavix # sMED:coumadin	(S (DGL (DG (DGSSIG (MED 'sMED'))) (DGL (DG (DGSSIG (MED 'sMED'))))))
+
